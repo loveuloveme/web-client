@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider, Flex } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Minifigures from './pages/Minifigures';
+import About from './pages/About';
+import Header from './components/Header'
+import Footer from './components/Footer';
+import theme from './theme';
+import ScrollToTop from "./util/ScrollToTop";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Viewer = React.lazy(() => import('./pages/Viewer'));
+
+export default function App() {
+
+    const [headerTheme, setHeaderTheme] = useState({ light: false });
+
+    return (
+        <ChakraProvider theme={theme}>
+            <Router>
+                <ScrollToTop>
+                    <Header theme={headerTheme}/>
+                    <Flex direction='column' minH='100%'>
+                        <React.Suspense fallback={<>hehehe</>}>
+                            <Routes>
+                                <Route exact path="/" element={<Home onLoad={() => setHeaderTheme({ light: true })} />}  />
+                                <Route exact path="/figures" element={<Minifigures onLoad={() => setHeaderTheme({ light: true })} />}  />
+                                <Route exact path="/about" element={<About onLoad={() => setHeaderTheme({ light: false })} />} />
+                                <Route exact path="/figure/:id" element={<Viewer onLoad={() => setHeaderTheme({ light: false })} />} />
+                            </Routes>
+                        </React.Suspense>
+                    </Flex>
+                    <Footer />
+                </ScrollToTop>
+            </Router>
+        </ChakraProvider>
+    );
 }
-
-export default App;

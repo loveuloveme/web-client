@@ -1,0 +1,14 @@
+@keyframes skeleton{
+    0%{
+        fill: rgb(224, 224, 224);
+    }
+
+    100%{
+        fill: rgb(199, 199, 199);
+    }
+}
+
+.skeleton-figure path {
+    background: padding-box rgb(74, 85, 104);
+    animation: 0.8s linear 0s infinite alternate none running skeleton;
+}

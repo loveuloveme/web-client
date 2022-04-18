@@ -12,7 +12,6 @@ const links = [
     {name: 'HOME', path: '/'},
     {name: 'MINIFIGURES', path: '/figures'},
     {name: 'VIEWER', path: '/figure/123123'},
-    {name: 'VIEWER 2', path: '/figure/123125'},
     {name: 'ABOUT', path: '/about'}
 ]
 

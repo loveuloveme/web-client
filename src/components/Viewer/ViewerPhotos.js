@@ -45,7 +45,7 @@ export default function ViewerPhotos({ imgs = [], isLoading = true, select}) {
         <Flex
             flex='1'
         >
-            {imgs.map((item, i) => <Block index={i} img={item} onClick={select} hide={isLoading} />)}
+            {imgs.map((item, i) => <Block index={i} key={i} img={item} onClick={select} hide={isLoading} />)}
         </Flex>
     );
 

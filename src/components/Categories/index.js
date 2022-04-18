@@ -46,7 +46,7 @@ function Categories(){
                     columns={[1, null, 2, 3, 4]}
                     paddingTop='30px'
                 >
-                    {data.map((item, i) => <Category {...item} />)}
+                    {data.map((item, i) => <Category key={i} {...item} />)}
                 </SimpleGrid>
             </Box>
         </Container>

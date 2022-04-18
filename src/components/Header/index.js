@@ -55,7 +55,7 @@ export default function Header({ theme }){
                     spacing='10px'
                     display={{ sm: 'none', base: 'none', md: 'flex' }}
                 >
-                    {links.map(item => <HeaderLink path={item.path} light={theme.light && transparent}>{item.name}</HeaderLink>)}
+                    {links.map(item => <HeaderLink key={item.path} path={item.path} light={theme.light && transparent}>{item.name}</HeaderLink>)}
                 </Stack>
 
                 <Profile display={{ sm: 'none', base: 'none', md: 'flex' }} />

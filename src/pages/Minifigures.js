@@ -72,7 +72,7 @@ function Minifigures({setHeaderTheme}){
                                 columns={[2, 3, null, null, 4]}
                                 gap={1}
                             >
-                                {new Array(20).fill(0).map(item => <FigureCard />)}
+                                {new Array(20).fill(0).map((item, i) => <FigureCard key={i} />)}
                             </SimpleGrid>
                         </Box>
                     </Flex>

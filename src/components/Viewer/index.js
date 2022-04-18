@@ -1,5 +1,5 @@
 import { Box, Image, Flex, Text, Container, SimpleGrid, Heading } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ViewerPhotos from "./ViewerPhotos";
 import ViewerStat from "./ViewerStat";
 import { motion } from "framer-motion";
@@ -25,14 +25,15 @@ function loadImage(url){
     }
 }
 
-export function Viewer({ photos = [], figureId }){
+export function Viewer({ photos_ = [], figureId }){
 
     const [isLoading, setLoading] = useState(true);
     const [selected, setSelected] = useState(0);
 
-    photos = ['https://minifigures.e2ecdn.uk/Products/MF112.png?w=493&h=493&quality=85&scale=canvas', 'https://minifigures.e2ecdn.uk/Products/MF112---Main-01.jpg?w=500&h=500&quality=100&scale=canvas', 'https://minifigures.e2ecdn.uk/Products/MF112---Main-03.jpg?w=500&h=500&quality=85&scale=canvas']
-
     
+    const ref = useRef(['https://minifigures.e2ecdn.uk/Products/MF112.png?w=493&h=493&quality=85&scale=canvas', 'https://minifigures.e2ecdn.uk/Products/MF112---Main-01.jpg?w=500&h=500&quality=100&scale=canvas', 'https://minifigures.e2ecdn.uk/Products/MF112---Main-03.jpg?w=500&h=500&quality=85&scale=canvas']);
+    
+    let photos = ref.current;
 
     const selectImage = index => {
         setSelected(index);

@@ -4,10 +4,10 @@ import Popular from '../components/Popular';
 import Categories from '../components/Categories';
 import { useEffect } from "react";
 
-function Home({onLoad}){
+function Home({setHeaderTheme}){
     useEffect(() => {
-        onLoad();
-    }, []);
+        setHeaderTheme({ light: true });
+    }, [setHeaderTheme]);
 
     return (
         <>

@@ -1,8 +1,6 @@
-import { Box, Image, Flex, Text, Button, SimpleGrid } from "@chakra-ui/react";
+import { Box, Image, Flex, Text, Button } from "@chakra-ui/react";
 import ReactRain from 'react-rain-animation';
 import "react-rain-animation/lib/style.css";
-
-import FigureCard from '../FigureCard';
 
 function Intro(){
     return (

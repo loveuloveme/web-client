@@ -4,10 +4,11 @@ import FigureCard from "../components/FigureCard";
 import {Filter, FilterBlock, FilterCheckbox} from '../components/Filter';
 import Popular from "../components/Popular";
 import { useEffect } from "react";
-function Minifigures({onLoad}){
+
+function Minifigures({setHeaderTheme}){
     useEffect(() => {
-        onLoad();
-    }, []);
+        setHeaderTheme({ light: true });
+    }, [setHeaderTheme]);
 
     return (
         <>

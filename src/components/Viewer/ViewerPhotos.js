@@ -1,7 +1,6 @@
 import { Box, Image, Flex } from "@chakra-ui/react";
-import { motion, isValidMotionProp, AnimatePresence  } from "framer-motion";
+import { motion, isValidMotionProp  } from "framer-motion";
 import { chakra } from '@chakra-ui/react';
-import { useEffect, useState } from "react";
 
 const MotionBox = chakra(motion.div, {
     shouldForwardProp: isValidMotionProp,

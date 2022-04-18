@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { loremIpsum } from 'react-lorem-ipsum';
 import Sponsors from "../components/Sponsors";
 
-function About({onLoad}){
+function About({setHeaderTheme}){
     useEffect(() => {
-        onLoad();
-    }, []);
+        setHeaderTheme({ light: false });
+    }, [setHeaderTheme]);
+
     
     return (
         <Box>

@@ -1,15 +1,12 @@
-import { Container, Stack, Text, chakra } from "@chakra-ui/react";
+import { Container, Stack, chakra } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logotype from "../Logotype";
 import MobileDrawer from "./MobileDrawer";
 import Profile from "./Profile";
 import React from "react";
-
 import HeaderLink from "./HeaderLink";
-import { HeaderContext } from "../../app";
 
-import { useContext } from "react";
 
 const links = [
     {name: 'HOME', path: '/'},

@@ -1,16 +1,11 @@
-import { Box, Image, Flex, Text, Container, SimpleGrid, Heading, Spinner, Skeleton } from "@chakra-ui/react";
+import { Box, Image, Flex, Text, Container, SimpleGrid, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ViewerPhotos from "./ViewerPhotos";
 import ViewerStat from "./ViewerStat";
-import { chakra } from '@chakra-ui/react';
+import { motion } from "framer-motion";
+import FigureCard from "../FigureCard";
 import {ReactComponent as SkeletonSVG} from '../../assets/svg/figure-skeleton.svg';
 import './index.css';
-
-import { motion, isValidMotionProp, AnimatePresence  } from "framer-motion";
-import FigureCard from "../FigureCard";
-const MotionImage = chakra(motion.img, {
-    shouldForwardProp: isValidMotionProp,
-});
 
 function loadImage(url){
     const createPromise = () => {
@@ -53,7 +48,7 @@ export function Viewer({ photos = [], figureId }){
             });
         }, 1000)
         
-    }, [figureId]);
+    }, [figureId, photos]);
 
     return (
         <Flex

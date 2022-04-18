@@ -3,12 +3,13 @@ import { Viewer } from "../components/Viewer";
 
 import { useEffect } from "react";
 
-export default function ViewerPage({onLoad}){
+export default function ViewerPage({setHeaderTheme}){
     const {id} = useParams();
 
     useEffect(() => {
-        onLoad();
-    }, []);
+        setHeaderTheme({ light: false });
+    }, [setHeaderTheme]);
+
 
     return (
         <Viewer figureId={id} />

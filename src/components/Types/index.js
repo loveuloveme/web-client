@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Grid, Flex, Text, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Heading, Flex, Text, SimpleGrid } from "@chakra-ui/react";
 
 function TypeBlock({img, title, style={}}){
     return (

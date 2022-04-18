@@ -1,5 +1,5 @@
 import { ChakraProvider, Flex } from "@chakra-ui/react"
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Minifigures from './pages/Minifigures';
@@ -23,10 +23,10 @@ export default function App() {
                     <Flex direction='column' minH='100%'>
                         <React.Suspense fallback={<>hehehe</>}>
                             <Routes>
-                                <Route exact path="/" element={<Home onLoad={() => setHeaderTheme({ light: true })} />}  />
-                                <Route exact path="/figures" element={<Minifigures onLoad={() => setHeaderTheme({ light: true })} />}  />
-                                <Route exact path="/about" element={<About onLoad={() => setHeaderTheme({ light: false })} />} />
-                                <Route exact path="/figure/:id" element={<Viewer onLoad={() => setHeaderTheme({ light: false })} />} />
+                                <Route exact path="/" element={<Home setHeaderTheme={setHeaderTheme} />}  />
+                                <Route exact path="/figures" element={<Minifigures setHeaderTheme={setHeaderTheme} />}  />
+                                <Route exact path="/about" element={<About setHeaderTheme={setHeaderTheme} />} />
+                                <Route exact path="/figure/:id" element={<Viewer setHeaderTheme={setHeaderTheme} />} />
                             </Routes>
                         </React.Suspense>
                     </Flex>

@@ -1,6 +1,6 @@
 import { Container, Stack, chakra } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logotype from "../Logotype";
 import MobileDrawer from "./MobileDrawer";
 import Profile from "./Profile";
@@ -9,14 +9,23 @@ import HeaderLink from "./HeaderLink";
 
 
 const links = [
-    {name: 'HOME', path: '/'},
-    {name: 'MINIFIGURES', path: '/figures'},
-    {name: 'VIEWER', path: '/figure/123123'},
-    {name: 'ABOUT', path: '/about'}
+    {name: 'HOME', path: '/', theme: { light: true }},
+    {name: 'MINIFIGURES', path: '/figures', theme: { light: true }},
+    {name: 'VIEWER', path: '/figure/1', theme: { light: false }},
+    {name: 'ABOUT', path: '/about', theme: { light: false }}
 ]
 
-export default function Header({ theme }){
+export default function Header(){
     const [transparent, setTransparent] = useState(true);
+    const location = useLocation();
+    const [theme, setTheme] = useState({});
+
+    const _parse = url => url.split('/')[1];
+    
+    useEffect(() => {
+        setTheme(links.find(item => _parse(item.path) === _parse(location.pathname)).theme);
+    }, [location]);
+
 
     useEffect(() => {
         if(typeof window !== "undefined"){
@@ -57,7 +66,7 @@ export default function Header({ theme }){
                     {links.map(item => <HeaderLink key={item.path} path={item.path} light={theme.light && transparent}>{item.name}</HeaderLink>)}
                 </Stack>
 
-                <Profile display={{ sm: 'none', base: 'none', md: 'flex' }} />
+                <Profile theme={theme} display={{ sm: 'none', base: 'none', md: 'flex' }} />
                 <MobileDrawer links={links} />
             </Container>
         </chakra.header>

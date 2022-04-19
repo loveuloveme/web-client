@@ -1,8 +1,11 @@
 import { Box, Image, Flex, Text, Button } from "@chakra-ui/react";
 import ReactRain from 'react-rain-animation';
+import { motion } from "framer-motion";
 import "react-rain-animation/lib/style.css";
+import leagueImage from '../../assets/img/league.png';
+import arkhamImage from '../../assets/img/arkham.jpg';
 
-function Intro(){
+function Intro() {
     return (
         <Flex
             h={['65vh', null, '85vh']}
@@ -40,25 +43,46 @@ function Intro(){
                         fontSize='xl'
                         py='30px'
                         px='40px'
+                        lineHeight='normal'
                     >
                         ORDER NOW
                     </Button>
                 </Flex>
                 <Image
+                    as={motion.img}
                     flex='1'
                     maxW='100%'
                     maxH='min(80vh, 1000px)'
                     objectPosition='bottom'
-                    src={require('../../assets/img/league.png')}
+                    src={leagueImage}
                     zIndex={10}
 
-                    height={['55vh', null, '80vh']}
-                    objectFit={{base: 'cover', lg: 'contain'}}
-                /> 
+                    initial={{
+                        opacity: 0,
+                        transform: 'translateY(50px)',
+                    }}
 
-                <Box pos='absolute' w='100%' h='100%' left='0' top='0' zIndex='10' bgImage='linear-gradient(0deg, rgba(15,16,20,1) 0%, rgba(15,16,20,1) 15%, rgba(0,212,255,0) 50%)'></Box>
+                    animate={{
+                        opacity: 1,
+                        transform: 'translateY(0px)',
+                        transition: { duration: 0.5, delay: 0.5, ease: 'easeInOut' }
+                    }}
+
+                    height={['55vh', null, '80vh']}
+                    objectFit={{ base: 'cover', lg: 'contain' }}
+                />
+
+                <Box
+                    pos='absolute'
+                    w='100%'
+                    h='100%'
+                    left='0'
+                    top='0'
+                    zIndex='10'
+                    bgImage='linear-gradient(0deg, rgba(15,16,20,1) 0%, rgba(0,0,0,0.9) 15%, rgba(0,0,0,0) 51%)'
+                ></Box>
                 <Image
-                    src='https://cdn.wallpapersafari.com/7/48/Xy6lm2.jpg'
+                    src={arkhamImage}
                     w='100%'
                     h='100%'
                     top='0'

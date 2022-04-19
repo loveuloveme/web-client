@@ -24,6 +24,9 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState } from "react";
 
+import loginImage from '../../assets/img/login.png';
+import signupImage from '../../assets/img/signup.gif'
+
 function SignUp({ changeState }) {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -42,7 +45,7 @@ function SignUp({ changeState }) {
                         h='160px'
                         w='100%'
                         backgroundSize='cover'
-                        backgroundImage={require('../../assets/img/YSow.gif')}
+                        backgroundImage={signupImage}
                         borderRadius='7px'
 
                         justifyContent='flex-start'
@@ -136,7 +139,7 @@ function SignIn({ changeState }) {
                         mb='20px'
                     >
                         <Image
-                            src={require('../../assets/img/login.png')}
+                            src={loginImage}
                             pos='absolute'
                             zIndex='0'
                             h='100%'

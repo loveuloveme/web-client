@@ -1,20 +1,35 @@
 import { Box, Container, Heading, Flex, Text, SimpleGrid } from "@chakra-ui/react";
 
+import originalImage from '../../assets/img/types/original.jpg';
+import customImage from '../../assets/img/types/custom.jpg';
+import { motion } from "framer-motion";
+
 function TypeBlock({img, title, style={}}){
     return (
         <Flex
-            pos='relative'
             bgSize='cover'
             bgPos='center'
             bgImage={img}
             h="400px"
-            p='30px'
-            alignItems='center'
-            justifyContent='center'
+            
             cursor='pointer'
             style={style.container}
         >
-            <Heading color='#fff' size='2xl' textAlign='center'>{title}</Heading>
+            <Flex
+                as={motion.div}
+                w='100%'
+                h='100%'
+
+                alignItems='center'
+                justifyContent='center'
+                transition='all 0.1s ease'
+                _hover={{
+                    bg: 'rgba(0, 0, 0, 0.4)'
+                }}
+            >
+                <Heading color='#fff' size='2xl' textAlign='center'>{title}</Heading>
+            </Flex>
+            
         </Flex>
     );
 }
@@ -28,11 +43,11 @@ function Types(){
                 <Text textAlign='center' fontFamily='Smooch Sans' fontSize='5xl' fontWeight='bold'>THERE IS TWO TYPES OF FIGURES</Text>
                 <SimpleGrid
                     columns={{ base: 1, sm: 2}}
-                    gap={0}
+                    gap={2}
                     my='10px'
                 >
-                    <TypeBlock img={require('../../assets/img/types/original.jpg')} title='ORIGINAL SERIES' />
-                    <TypeBlock img={require('../../assets/img/types/custom.jpg')} title={'CUSTOM SERIES'} />
+                    <TypeBlock img={originalImage} title='ORIGINAL SERIES' />
+                    <TypeBlock img={customImage} title='CUSTOM SERIES' />
                 </SimpleGrid>
             </Container>
         </Box>

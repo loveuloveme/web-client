@@ -3,13 +3,8 @@ import FigureCard from "../components/FigureCard";
 
 import {Filter, FilterBlock, FilterCheckbox} from '../components/Filter';
 import Popular from "../components/Popular";
-import { useEffect } from "react";
 
-function Minifigures({setHeaderTheme}){
-    useEffect(() => {
-        setHeaderTheme({ light: true });
-    }, [setHeaderTheme]);
-
+function Minifigures(){
     return (
         <>
             <Box

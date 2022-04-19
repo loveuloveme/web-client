@@ -1,14 +1,10 @@
 import { AspectRatio , Box, Container, Heading, Flex, Text, VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { loremIpsum } from 'react-lorem-ipsum';
 import Sponsors from "../components/Sponsors";
 
-function About({setHeaderTheme}){
-    useEffect(() => {
-        setHeaderTheme({ light: false });
-    }, [setHeaderTheme]);
+import aboutVideo from '../assets/video/morning.mp4';
 
-    
+function About(){
     return (
         <Box>
             <Container
@@ -34,7 +30,7 @@ function About({setHeaderTheme}){
                 >
                     <>
                         <video
-                            autoplay='autoplay'
+                            autoPlay='autoplay'
                             muted
                             loop
 
@@ -45,7 +41,7 @@ function About({setHeaderTheme}){
                                 transform: 'scale(1.1)'
                             }}
                         >
-                            <source src={require('../assets/video/morning.mp4')} type="video/mp4" />
+                            <source src={aboutVideo} type="video/mp4" />
                         </video>
 
                         <Flex

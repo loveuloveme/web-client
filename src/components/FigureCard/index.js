@@ -1,6 +1,7 @@
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 
+import defaultFigure from './img.png';
 
 function FigureCard({ ids }){
     let id = Math.floor(Math.random() * 1000)
@@ -15,7 +16,7 @@ function FigureCard({ ids }){
                     p='12px'
                 >
                     <Image
-                        src={require('./img.png')}
+                        src={defaultFigure}
                     />
                 </Box>
                 <Flex

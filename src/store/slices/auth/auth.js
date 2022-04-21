@@ -12,7 +12,10 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        
+        clearErrors(state){
+            state.signInError = false;
+            state.signUpError = false;
+        }
     },
     extraReducers: {
         [signOut.fulfilled]: (state, action) => {
@@ -41,9 +44,6 @@ export const authSlice = createSlice({
             state.signUpError = true;
             state.loading = false;
         },
-        [login.rejected]: (state, action) => {
-            state.loading = false;
-        },
         [fetchUserData.pending]: (state, action) => {
             state.loading = true;
         },
@@ -59,6 +59,5 @@ export const authSlice = createSlice({
 })
 
 
-export const {} = authSlice.actions;
-
+export const { clearErrors } = authSlice.actions;
 export default authSlice.reducer;

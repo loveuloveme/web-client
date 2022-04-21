@@ -13,7 +13,7 @@ import { HamburgerIcon } from '@chakra-ui/icons'
 
 import Profile from "./Profile";
 
-function MobileLink({children, path}){
+function MobileLink({ children, path }) {
     return (
         <Link to={path}>
             <Box
@@ -34,7 +34,7 @@ function MobileLink({children, path}){
     );
 }
 
-function MobileDrawer({links}){
+function MobileDrawer({ links }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
@@ -59,7 +59,10 @@ function MobileDrawer({links}){
                         <Profile />
                     </DrawerHeader>
                     <DrawerBody>
-                        {links.map((item, i) => <MobileLink key={i} path={item.path}>{item.name}</MobileLink>)}
+                        <MobileLink path='/'>HOME</MobileLink>
+                        <MobileLink path='/figures'>MINIFIGURES</MobileLink>
+                        <MobileLink path='/figure/1'>VIEWER</MobileLink>
+                        <MobileLink path='/about'>ABOUT</MobileLink>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>

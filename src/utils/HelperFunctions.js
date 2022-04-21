@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie';
 
 export const getToken = () => {
-    return Cookies.get('sFrontToken');
+    return Cookies.get('sAccessToken');
 }
 
 export const removeToken = () => {
-    Cookies.set('sFrontToken', '');
+    Cookies.remove('sAccessToken', '');
 }
 
 export const setToken = (val) => {
-    Cookies.set('sFrontToken', val);
+    Cookies.set('sAccessToken', val);
 }

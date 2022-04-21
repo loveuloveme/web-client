@@ -3,8 +3,17 @@ import { loremIpsum } from 'react-lorem-ipsum';
 import Sponsors from "../components/Sponsors";
 
 import aboutVideo from '../assets/video/morning.mp4';
+import { useDispatch } from "react-redux";
+import { setHeaderTheme } from "../store/slices/header/header";
+import { useEffect } from "react";
 
 function About(){
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setHeaderTheme('dark'));
+    }, [dispatch]);
+    
     return (
         <Box>
             <Container

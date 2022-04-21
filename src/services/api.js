@@ -28,7 +28,7 @@ api.me = () => _api.get('/user/me');
 api.signin = (email, password) => _api.post('/auth/signin', _buildForm(email, password));
 api.signup = (email, password) => _api.post('/auth/signup', _buildForm(email, password));
 api.signout = () => _api.post('/auth/signout');
-api.createOwnUse = data => _api.post('/user/', data)
+api.createOwnUser = data => _api.post('/user/', data);
 
 
 export default api;

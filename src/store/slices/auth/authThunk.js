@@ -21,13 +21,13 @@ export const signUp = createAsyncThunk('auth/signup', async (payload, { rejectWi
 
     const response = await api.signup(payload.email, payload.password);
 
-    if(!response.data.user){
+    if(response.data.status != 'OK'){
         removeToken();
-        return rejectWithValue('');
+        return rejectWithValue(response.data);
     }
 
     const createResponse = await api.createOwnUser(inputData);
-
+    
     if(createResponse.statusCode >= 400){
         removeToken();
         return rejectWithValue('');
@@ -36,12 +36,12 @@ export const signUp = createAsyncThunk('auth/signup', async (payload, { rejectWi
     return createResponse.data;
 });
 
-export const login = createAsyncThunk('auth/login', async (payload, { rejectWithValue }) => {
+export const login = createAsyncThunk('auth/signin', async (payload, { rejectWithValue }) => {
     const response = await api.signin(payload.email, payload.password);
 
-    if(!response.data.user){
+    if(response.data.status != 'OK'){
         removeToken();
-        return rejectWithValue('');
+        return rejectWithValue(response.data);
     }
 
     const userResponse = await api.me();

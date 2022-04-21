@@ -1,21 +1,52 @@
 import { Box, Container, Heading, Flex, SimpleGrid } from "@chakra-ui/react";
 import FigureCard from "../components/FigureCard";
-
-import {Filter, FilterBlock, FilterCheckbox} from '../components/Filter';
+import { Filter, FilterBlock, FilterCheckbox } from '../components/Filter';
 import Popular from "../components/Popular";
+import { useDispatch } from "react-redux";
+import { setHeaderTheme } from "../store/slices/header/header";
+import { useEffect } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-function Minifigures(){
+function Minifigures() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setHeaderTheme('light'));
+    }, [dispatch]);
+
     return (
         <>
             <Box
-                bgColor='whitesmoke'
-                h='450px'
+                h='500px'
                 mb='30px'
-
-                bgImage='https://image.api.playstation.com/cdn/EP1018/CUSA00563_00/Dx0GfbLm6f7TBSMKzaWYPwmvELblGjWN.jpg'
+                position='relative'
                 bgSize='cover'
                 bgPos='center'
             >
+                <LazyLoadImage
+                    style={{
+                        objectFit: 'cover',
+                        height: '500px',
+                    }}
+
+                    wrapperProps={{
+                        style: {
+                            top: 0,
+                            left: 0,
+                            position: 'absolute',
+                            height: '500px',
+                            width: '100%',
+                            zIndex: -1
+                        }
+                    }}
+
+                    height='500px'
+
+                    effect='blur'
+
+                    src='https://image.api.playstation.com/cdn/EP1018/CUSA00563_00/Dx0GfbLm6f7TBSMKzaWYPwmvELblGjWN.jpg'
+                    width='100%'
+                />
                 <Container maxW='container.xl' h='100%'>
                     <Flex
                         h='100%'
@@ -34,9 +65,9 @@ function Minifigures(){
                 </Container>
             </Box>
             <Container maxW='container.xl'>
-                
+
                 <Flex direction='column' pb='100px'>
-                    
+
                     <Flex direction={['column', null, 'row']}>
                         <Box w={['100%', null, '300px']} mb='30px'>
                             <Filter>
@@ -63,7 +94,7 @@ function Minifigures(){
                         </Box>
                         <Box flex='1'>
                             <Heading size='3xl' mb='20px'>FIGURES</Heading>
-                            <SimpleGrid 
+                            <SimpleGrid
                                 columns={[2, 3, null, null, 4]}
                                 gap={1}
                             >

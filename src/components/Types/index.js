@@ -22,9 +22,9 @@ function TypeBlock({img, title, style={}}){
 
                 alignItems='center'
                 justifyContent='center'
-                transition='all 0.1s ease'
+                transition='all 0.1s linear'
                 _hover={{
-                    bg: 'rgba(0, 0, 0, 0.4)'
+                    bg: 'rgba(0, 0, 0, 0.2)'
                 }}
             >
                 <Heading color='#fff' size='2xl' textAlign='center'>{title}</Heading>

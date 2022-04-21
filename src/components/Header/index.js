@@ -1,40 +1,61 @@
-import { Container, Stack, Box, Flex, chakra } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { Container, Stack, Box, Flex, chakra, Text } from "@chakra-ui/react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logotype from "../Logotype";
 import MobileDrawer from "./MobileDrawer";
 import Profile from "./Profile";
 import React from "react";
-import HeaderLink from "./HeaderLink";
+import { useSelector } from "react-redux";
 
+export const ThemeContext = React.createContext({ light: true });
 
-const links = [
-    {name: 'HOME', path: '/', theme: { light: true }},
-    {name: 'MINIFIGURES', path: '/figures', theme: { light: true }},
-    {name: 'VIEWER', path: '/figure/1', theme: { light: false }},
-    {name: 'ABOUT', path: '/about', theme: { light: false }}
-]
+function HeaderLink({ path, children }) {
+    const { light } = useContext(ThemeContext);
 
-export default function Header(){
+    const lightStyle = light && {
+        color: '#ffffff'
+    };
+    const hoverStyle = {
+        color: light ? '#f2f2f2' : '#141414',
+        bgColor: 'rgba(0, 0, 0, 0.07)'
+    };
+
+    const activeStyle = path === useLocation().pathname && hoverStyle;
+
+    return (
+        <Link to={path}>
+            <Text
+                textTransform='uppercase'
+                fontWeight='600'
+                color='#000000'
+                fontSize='14px'
+                p='6px 15px'
+                borderRadius='8px'
+                transition='all 0.18s ease-in'
+                _hover={hoverStyle}
+
+                {...lightStyle}
+                {...activeStyle}
+            >
+                {children}
+            </Text>
+        </Link>
+    );
+}
+export default function Header() {
+    const { theme } = useSelector((state) => state.header);
+    const light = theme == 'light';
+
     const [transparent, setTransparent] = useState(true);
-    const location = useLocation();
-    const [theme, setTheme] = useState({});
-
-    const _parse = url => url.split('/')[1];
-    
-    useEffect(() => {
-        setTheme(links.find(item => _parse(item.path) === _parse(location.pathname) || { theme: { light: false } }).theme);
-    }, [location]);
-
 
     useEffect(() => {
-        if(typeof window !== "undefined"){
+        if (typeof window !== "undefined") {
             const onScroll = () => setTransparent(window.scrollY < 300);
             window.addEventListener('scroll', onScroll);
             return () => window.removeEventListener('scroll', onScroll);
         }
     }, []);
-    
+
     return (
         <chakra.header
             position="fixed"
@@ -53,28 +74,34 @@ export default function Header(){
                 padding='10px 0'
                 h='82px'
             >
-                <Box flexBasis='33.33%'>
-                    <Link to='/'>
-                        <Logotype width='50px' height='50px' />
-                    </Link>
-                </Box>
+                <ThemeContext.Provider value={{ light: light && transparent }}>
 
-                <Stack
-                    as="nav"
-                    direction={{md: 'row'}}
-                    spacing='10px'
-                    display={{ sm: 'none', base: 'none', md: 'flex' }}
-                    flexBasis='33.33%'
-                    justifyContent='center'
-                >
-                    {links.map(item => <HeaderLink key={item.path} path={item.path} light={theme.light && transparent}>{item.name}</HeaderLink>)}
-                </Stack>
+                    <Box flexBasis='33.33%'>
+                        <Link to='/'>
+                            <Logotype width='50px' height='50px' />
+                        </Link>
+                    </Box>
 
-                <Flex flexBasis='33.33%' justifyContent='flex-end'>
-                    <Profile theme={theme} />
-                </Flex>
+                    <Stack
+                        as="nav"
+                        direction={{ md: 'row' }}
+                        spacing='10px'
+                        display={{ sm: 'none', base: 'none', md: 'flex' }}
+                        flexBasis='33.33%'
+                        justifyContent='center'
+                    >
+                        <HeaderLink path='/'>HOME</HeaderLink>
+                        <HeaderLink path='/figures'>MINIFIGURES</HeaderLink>
+                        <HeaderLink path='/figure/1'>VIEWER</HeaderLink>
+                        <HeaderLink path='/about'>ABOUT</HeaderLink>
+                    </Stack>
 
-                <MobileDrawer links={links} />
+                    <Flex flexBasis='33.33%' justifyContent='flex-end'>
+                        <Profile />
+                    </Flex>
+
+                    <MobileDrawer />
+                </ThemeContext.Provider>
             </Container>
         </chakra.header>
     );

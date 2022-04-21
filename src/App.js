@@ -8,20 +8,12 @@ import Header from './components/Header'
 import Footer from './components/Footer';
 import theme from './theme';
 import ScrollToTop from "./utils/ScrollToTop";
-import * as reactRouterDom from "react-router-dom";
-import ThirdPartyEmailPassword from "supertokens-auth-react/recipe/thirdpartyemailpassword";
-import Session from "supertokens-auth-react/recipe/session";
-import SuperTokens, { getSuperTokensRoutesForReactRouterDom } from "supertokens-auth-react";
 import store from './store';
 import { Provider } from 'react-redux'
-import { getToken } from "./utils/HelperFunctions";
 import { fetchUserData } from "./store/slices/auth/authThunk";
 const Viewer = React.lazy(() => import('./pages/Viewer'));
 
-if (getToken()) {
-    store.dispatch(fetchUserData());
-}
-
+store.dispatch(fetchUserData());
 
 export default function App() {
     const [headerTheme, setHeaderTheme] = useState({ light: false });

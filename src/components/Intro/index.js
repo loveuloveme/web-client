@@ -59,13 +59,13 @@ function Intro() {
 
                     initial={{
                         opacity: 0,
-                        transform: 'translateY(50px)',
+                        transform: 'translateY(20px)',
                     }}
 
                     animate={{
                         opacity: 1,
                         transform: 'translateY(0px)',
-                        transition: { duration: 0.5, delay: 0.5, ease: 'easeInOut' }
+                        transition: { duration: 0.5, ease: 'easeInOut' }
                     }}
 
                     height={['55vh', null, '80vh']}

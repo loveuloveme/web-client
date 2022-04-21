@@ -31,7 +31,7 @@ function About(){
                     <>
                         <video
                             autoPlay='autoplay'
-                            muted
+                            muted='muted'
                             loop
 
                             style={{

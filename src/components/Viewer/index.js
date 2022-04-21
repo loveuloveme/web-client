@@ -4,7 +4,7 @@ import ViewerPhotos from "./ViewerPhotos";
 import ViewerStat from "./ViewerStat";
 import { motion } from "framer-motion";
 import FigureCard from "../FigureCard";
-import CacheImage from "../../util/CacheImage";
+import CacheImage from "../../utils/CacheImage";
 import {ReactComponent as SkeletonSVG} from '../../assets/svg/figure-skeleton.svg';
 import './index.css';
 

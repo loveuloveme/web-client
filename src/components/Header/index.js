@@ -1,4 +1,4 @@
-import { Container, Stack, chakra } from "@chakra-ui/react";
+import { Container, Stack, Box, Flex, chakra } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logotype from "../Logotype";
@@ -23,7 +23,7 @@ export default function Header(){
     const _parse = url => url.split('/')[1];
     
     useEffect(() => {
-        setTheme(links.find(item => _parse(item.path) === _parse(location.pathname)).theme);
+        setTheme(links.find(item => _parse(item.path) === _parse(location.pathname) || { theme: { light: false } }).theme);
     }, [location]);
 
 
@@ -53,20 +53,27 @@ export default function Header(){
                 padding='10px 0'
                 h='82px'
             >
-                <Link to='/'>
-                    <Logotype width='50px' height='50px' />
-                </Link>
+                <Box flexBasis='33.33%'>
+                    <Link to='/'>
+                        <Logotype width='50px' height='50px' />
+                    </Link>
+                </Box>
 
                 <Stack
                     as="nav"
                     direction={{md: 'row'}}
                     spacing='10px'
                     display={{ sm: 'none', base: 'none', md: 'flex' }}
+                    flexBasis='33.33%'
+                    justifyContent='center'
                 >
                     {links.map(item => <HeaderLink key={item.path} path={item.path} light={theme.light && transparent}>{item.name}</HeaderLink>)}
                 </Stack>
 
-                <Profile theme={theme} display={{ sm: 'none', base: 'none', md: 'flex' }} />
+                <Flex flexBasis='33.33%' justifyContent='flex-end'>
+                    <Profile theme={theme} />
+                </Flex>
+
                 <MobileDrawer links={links} />
             </Container>
         </chakra.header>

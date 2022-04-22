@@ -19,34 +19,11 @@ function Minifigures() {
             <Box
                 h='500px'
                 mb='30px'
-                position='relative'
+
+                bgImage='https://image.api.playstation.com/cdn/EP1018/CUSA00563_00/Dx0GfbLm6f7TBSMKzaWYPwmvELblGjWN.jpg'
                 bgSize='cover'
                 bgPos='center'
             >
-                <LazyLoadImage
-                    style={{
-                        objectFit: 'cover',
-                        height: '500px',
-                    }}
-
-                    wrapperProps={{
-                        style: {
-                            top: 0,
-                            left: 0,
-                            position: 'absolute',
-                            height: '500px',
-                            width: '100%',
-                            zIndex: -1
-                        }
-                    }}
-
-                    height='500px'
-
-                    effect='blur'
-
-                    src='https://image.api.playstation.com/cdn/EP1018/CUSA00563_00/Dx0GfbLm6f7TBSMKzaWYPwmvELblGjWN.jpg'
-                    width='100%'
-                />
                 <Container maxW='container.xl' h='100%'>
                     <Flex
                         h='100%'

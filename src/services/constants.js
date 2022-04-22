@@ -1,0 +1,1 @@
+export const BASE_URL = process.env.NODE_ENV == 'production' ? 'https://web-lab-is.herokuapp.com/' : 'http://localhost:3000/';

@@ -1,9 +1,8 @@
 import axios from 'axios'
-
-const baseURL = 'http://localhost:3000/';
+import { BASE_URL } from './constants';
 
 const _api = axios.create({
-    baseURL,
+    baseURL: BASE_URL,
     withCredentials: true
 });
 
@@ -24,11 +23,11 @@ const _buildForm = (email, password) => {
 
 const api = {};
 
-api.me = () => _api.get('/user/me');
+api.me = () => _api.get('/api/user/me');
 api.signin = (email, password) => _api.post('/auth/signin', _buildForm(email, password));
 api.signup = (email, password) => _api.post('/auth/signup', _buildForm(email, password));
 api.signout = () => _api.post('/auth/signout');
-api.createOwnUser = data => _api.post('/user/', data);
+api.createOwnUser = data => _api.post('/api/user/', data);
 
 
 export default api;

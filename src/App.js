@@ -11,27 +11,28 @@ import ScrollToTop from "./utils/ScrollToTop";
 import store from './store';
 import { Provider } from 'react-redux'
 import { fetchUserData } from "./store/slices/auth/authThunk";
+import Preload from "./components/Preload";
 const Viewer = React.lazy(() => import('./pages/Viewer'));
 
 store.dispatch(fetchUserData());
 
 export default function App() {
-    const [headerTheme, setHeaderTheme] = useState({ light: false });
 
     return (
         <ChakraProvider theme={theme}>
+            <Preload />
             <Router>
                 <ScrollToTop>
                     <Provider store={store}>
-                        <Header theme={headerTheme} />
+                        <Header />
                         <Flex direction='column' minH='100%'>
                             <React.Suspense fallback={<>hehehe</>}>
 
                                 <Routes>
-                                    <Route exact path="/" element={<Home setHeaderTheme={setHeaderTheme} />} />
-                                    <Route exact path="/figures" element={<Minifigures setHeaderTheme={setHeaderTheme} />} />
-                                    <Route exact path="/about" element={<About setHeaderTheme={setHeaderTheme} />} />
-                                    <Route exact path="/figure/:id" element={<Viewer setHeaderTheme={setHeaderTheme} />} />
+                                    <Route exact path="/" element={<Home />} />
+                                    <Route exact path="/figures" element={<Minifigures />} />
+                                    <Route exact path="/about" element={<About />} />
+                                    <Route exact path="/figure/:id" element={<Viewer />} />
                                 </Routes>
 
                             </React.Suspense>

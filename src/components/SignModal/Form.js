@@ -108,10 +108,10 @@ export default function Form(){
                         </Flex>
                     }
                     {
-                        signUpError || signInError &&
+                        (signUpError || signInError) &&
                         <Alert status='error'>
                             <AlertIcon />
-                            <AlertTitle mr={2}>Something goes wrong ;)</AlertTitle>
+                            <AlertTitle mr={2}>Something went wrong ;)</AlertTitle>
                         </Alert>
                     }
 
